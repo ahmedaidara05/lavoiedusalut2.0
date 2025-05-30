@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Voie du Salut</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <button class="close-btn">&times;</button>
+            <img src="logo.png" alt="Logo" class="logo">
+            <h1>La Voie du Salut</h1>
+            <div class="header-icons">
+                <button class="icon-btn settings-btn"><i class="fas fa-cog"></i></button>
+                <button class="icon-btn favorites-btn"><i class="fas fa-star"></i></button>
+                <button class="icon-btn note-btn"><i class="fas fa-sticky-note"></i></button>
+            </div>
+        </header>
+
+        <div id="homePage" class="home-page">
+            <div class="cover">
+                <img src="cover.jpg" alt="Cover Image">
+            </div>
+            <button class="start-btn">Commencer</button>
+            <p class="book-description">Explorez les enseignements spirituels à travers les chapitres sacrés.</p>
+        </div>
+
+        <div id="indexPage" class="index-page" style="display: none;">
+            <ul>
+                <li data-sura="1"><span class="sura-number">1</span> Al-Fatiha</li>
+                <li data-sura="2"><span class="sura-number">2</span> Al-Baqara</li>
+                <li data-sura="3"><span class="sura-number">3</span> Aal-E-Imran</li>
+                <li data-sura="4"><span class="sura-number">4</span> An-Nisa</li>
+                <li data-sura="5"><span class="sura-number">5</span> Al-Ma'ida</li>
+                <li data-sura="6"><span class="sura-number">6</span> Al-An'am</li>
+                <li data-sura="7"><span class="sura-number">7</span> Al-A'raf</li>
+                <li data-sura="8"><span class="sura-number">8</span> Al-Anfal</li>
+                <li data-sura="9"><span class="sura-number">9</span> At-Tawba</li>
+                <li data-sura="10"><span class="sura-number">10</span> Yunus</li>
+                <li data-sura="11"><span class="sura-number">11</span> Hud</li>
+                <li data-sura="12"><span class="sura-number">12</span> Yusuf</li>
+                <li data-sura="13"><span class="sura-number">13</span> Ar-Ra'd</li>
+                <li data-sura="14"><span class="sura-number">14</span> Ibrahim</li>
+                <li data-sura="15"><span class="sura-number">15</span> Al-Hijr</li>
+                <li data-sura="16"><span class="sura-number">16</span> An-Nahl</li>
+                <li data-sura="17"><span class="sura-number">17</span> Al-Isra</li>
+                <li data-sura="18"><span class="sura-number">18</span> Al-Kahf</li>
+                <li data-sura="19"><span class="sura-number">19</span> Maryam</li>
+                <li data-sura="20"><span class="sura-number">20</span> Ta-Ha</li>
+                <li data-sura="21"><span class="sura-number">21</span> Al-Anbiya</li>
+                <li data-sura="22"><span class="sura-number">22</span> Al-Hajj</li>
+                <li data-sura="23"><span class="sura-number">23</span> Al-Mu'minun</li>
+                <li data-sura="24"><span class="sura-number">24</span> An-Nur</li>
+                <li data-sura="25"><span class="sura-number">25</span> Al-Furqan</li>
+                <li data-sura="26"><span class="sura-number">26</span> Ash-Shu'ara</li>
+                <li data-sura="27"><span class="sura-number">27</span> An-Naml</li>
+                <li data-sura="28"><span class="sura-number">28</span> Al-Qasas</li>
+                <li data-sura="29"><span class="sura-number">29</span> Al-Ankabut</li>
+                <li data-sura="30"><span class="sura-number">30</span> Ar-Rum</li>
+                <li data-sura="31"><span class="sura-number">31</span> Luqman</li>
+                <li data-sura="32"><span class="sura-number">32</span> As-Sajda</li>
+                <li data-sura="33"><span class="sura-number">33</span> Al-Ahzab</li>
+                <li data-sura="34"><span class="sura-number">34</span> Saba</li>
+                <li data-sura="35"><span class="sura-number">35</span> Fatir</li>
+                <li data-sura="36"><span class="sura-number">36</span> Ya-Sin</li>
+                <li data-sura="37"><span class="sura-number">37</span> As-Saffat</li>
+                <li data-sura="38"><span class="sura-number">38</span> Sad</li>
+                <li data-sura="39"><span class="sura-number">39</span> Az-Zumar</li>
+                <li data-sura="40"><span class="sura-number">40</span> Ghafir</li>
+                <li data-sura="41"><span class="sura-number">41</span> Fussilat</li>
+                <li data-sura="42"><span class="sura-number">42</span> Ash-Shura</li>
+                <li data-sura="43"><span class="sura-number">43</span> Az-Zukhruf</li>
+                <li data-sura="44"><span class="sura-number">44</span> Ad-Dukhan</li>
+            </ul>
+        </div>
+
+        <div id="readingPage" class="reading-page" style="display: none;">
+            <input type="text" id="searchBar" class="search-bar" placeholder="Rechercher...">
+            <div id="searchResults" class="search-results" style="display: none;"></div>
+            <div class="content">
+                <h2 id="suraTitle"></h2>
+                <div id="arabicText" class="arabic-text"></div>
+                <div id="textContent" class="text-content"></div>
+                <div class="navigation-buttons">
+                    <button class="nav-btn prev-btn">Précédent</button>
+                    <button class="nav-btn next-btn">Suivant</button>
+                </div>
+            </div>
+            <button class="favorite-btn">☆</button>
+            <button class="customize-btn">Personnaliser</button>
+            <button class="ai-btn"><i class="fas fa-robot"></i></button>
+        </div>
+
+        <div id="settingsPanel" class="settings-panel" style="display: none;">
+            <button class="close-btn">&times;</button>
+            <div class="settings-content">
+                <div class="setting">
+                    <label for="languageSelect">Langue :</label>
+                    <select id="languageSelect">
+                        <option value="ar">Arabe</option>
+                        <option value="en">Anglais</option>
+                        <option value="fr" selected>Français</option>
+                    </select>
+                </div>
+                <div class="setting">
+                    <label for="themeSelect">Thème :</label>
+                    <select id="themeSelect">
+                        <option value="light">Clair</option>
+                        <option value="dark">Sombre</option>
+                    </select>
+                </div>
+                <div class="setting">
+                    <label for="fontSelect">Police :</label>
+                    <select id="fontSelect">
+                        <option value="Amiri">Amiri</option>
+                        <option value="Arial">Arial</option>
+                        <option value="Times">Times New Roman</option>
+                    </select>
+                </div>
+                <div class="setting">
+                    <label for="fontSize">Taille du texte :</label>
+                    <input type="range" id="fontSize" min="12" max="30" value="16">
+                </div>
+                <a href="#" class="link-btn">Conditions d'utilisation</a>
+                <a href="#" class="link-btn">Politique de confidentialité</a>
+                <div class="setting">
+                    <input type="text" placeholder="Nom d'utilisateur">
+                    <input type="password" placeholder="Mot de passe">
+                    <button class="auth-btn">Se connecter</button>
+                    <button class="auth-btn">S'inscrire</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="favoritesPage" class="favorites-page" style="display: none;">
+            <button class="close-btn">&times;</button>
+            <ul id="favoritesList"></ul>
+        </div>
+
+        <div id="notesPage" class="notes-page" style="display: none;">
+            <button class="close-btn">&times;</button>
+            <div class="notes-content">
+                <input type="text" id="newCategory" placeholder="Nouvelle catégorie">
+                <button class="add-category-btn">Ajouter</button>
+                <div id="categoriesList"></div>
+            </div>
+        </div>
+
+        <div id="customizePanel" class="customize-panel" style="display: none;">
+            <button class="close-customize-btn">&times;</button>
+            <div class="color-icons">
+                <button class="color-btn" data-color="#f5f5f0" style="background: #f5f5f0;"></button>
+                <button class="color-btn" data-color="#e0e0e0" style="background: #e0e0e0;"></button>
+                <button class="color-btn" data-color="#d2c9a3" style="background: #d2c9a3;"></button>
+            </div>
+            <div class="option-icons">
+                <button class="option-btn" id="zoom-in-btn"><i class="fas fa-search-plus"></i> Zoom +</button>
+                <button class="option-btn" id="zoom-out-btn"><i class="fas fa-search-minus"></i> Zoom -</button>
+                <button class="option-btn voice-play-btn"><i class="fas fa-play"></i> Lecture à haute voix</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="script.js"></script>
+    <script src="payment.js"></script>
+</body>
+</html>
