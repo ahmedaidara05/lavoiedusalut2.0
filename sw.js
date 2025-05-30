@@ -6,7 +6,6 @@ self.addEventListener('install', (event) => {
                 '/index.html',
                 '/styles.css',
                 '/script.js',
-                '/payment.js',
                 '/logo.png',
                 '/cover.jpg'
             ]).catch(err => console.error('Cache installation failed:', err));
