@@ -1,10 +1,10 @@
 // Configuration Paytech
 const PAYTECH_API_KEY = 'f8a077dfe10504fd7f7386f954c2908b6693ca5a859fe8583efc2a187fb6cced';
-const PAYTECH_SECRET = '60722af081d51b2f0d4732a2d1699a19a005ca2327aa2665eab4e4332';
+const PAYTECH_SECRET = '60722af081d51b2f0d4732a2d1699a19a005ca2327aa2665eab4e65dbe4e4332';
 const PAYTECH_BASE_URL = 'https://api.paytech.sn';
 const TOTAL_PRICE = 2000; // 2000 FCFA pour les 35 chapitres
 
-// Création de la popup de paiement
+// Fonction pour afficher la popup d'achat
 function showPaymentPopup() {
     const overlay = document.createElement('div');
     overlay.className = 'pay-overlay';
@@ -17,6 +17,70 @@ function showPaymentPopup() {
         </div>
     `;
     document.body.appendChild(overlay);
+
+    // Ajouter les styles CSS dans le <head> pour la popup
+    const style = document.createElement('style');
+    style.textContent = `
+        .pay-overlay {
+            display: flex;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        .pay-modal {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .pay-modal h3 {
+            color: #2e7d32;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        .pay-modal p {
+            color: #1a3c34;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .pay-btn {
+            background: linear-gradient(90deg, #2e7d32, #1f5c24);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .pay-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(46, 125, 50, 0.4);
+        }
+        .close-pay-modal {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: #1a3c34;
+            cursor: pointer;
+        }
+    `;
+    document.head.appendChild(style);
 
     // Fermer la popup
     overlay.querySelector('.close-pay-modal').addEventListener('click', () => {
@@ -70,3 +134,6 @@ function initiatePayment() {
 console.log('URL de notification instantanée (IPN): ' + window.location.origin + '/ipn');
 console.log('URL de redirection en cas de succès: ' + window.location.origin + '/success');
 console.log('URL de redirection en cas d\'annulation: ' + window.location.origin + '/cancel');
+
+// Exporter la fonction showPaymentPopup pour l'utiliser dans script.js
+window.showPaymentPopup = showPaymentPopup;
