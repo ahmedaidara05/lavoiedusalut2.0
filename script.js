@@ -46,6 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let isPlaying = false;
     let synth = window.speechSynthesis;
     let currentFontSize = 16;
+    let hasPurchased = localStorage.getItem('hasPurchased') === 'true'; // État du paiement
 
     // Contenu des 44 sourates en arabe, anglais et français (avec 4 paragraphes pour 1-5 et 44)
     const suraContents = {
@@ -60,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
             fr: "Au nom d'Allah, le Tout Miséricordieux, le Très Miséricordieux<br>Ceci est le Livre au sujet duquel il n'y a aucun doute, un guide pour les pieux<br><br>Ce chapitre commence par souligner l’importance du livre sacré. Ce texte peut inclure des détails sur la manière d’utiliser ce livre comme guide pour la vie quotidienne, avec quelques exemples pratiques ajoutés.<br><br>Le paragraphe suivant pourrait aborder les caractéristiques des pieux. Nous pouvons mentionner ici comment on peut devenir pieux en suivant les enseignements religieux et en adhérant à de bonnes mœurs.<br><br>Dans ce troisième paragraphe, nous pouvons discuter de l’importance de la prière et de l’aumône. Ces actes d’adoration sont des piliers de l’Islam, et nous pouvons parler de leur impact spirituel et social sur l’individu et la communauté.<br><br>Enfin, ce quatrième paragraphe résume les bienfaits spirituels de ce chapitre. Nous pouvons parler de la paix que la foi apporte, avec une prière demandant la guidance et la constance sur le droit chemin."
         },
         3: {
-            ar: "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ<br>الم ۝ ٱللَّهُ لَآ إِلَٰهَ إِلَّا هُوَ ٱلْحَىُّ ٱلْقَيُّومُ<br><br>هذه الفقرة الأولى تتحدث عن توحيد الله. يمكن أن نذكر هنا أهمية الإيمان بوحدانية الله وكيف أن هذا الاعتقاد يشكل أساس العقيدة الإسلامية.<br><br>الفقرة الثانية قد تتناول قصة عائلة عمران. يمكن أن نشير إلى قصة مريم وميلاد عيسى عليهما السلام، مع التركيز على الدروس الأخلاقية المستفادة من هذه القصة.<br><br>في الفقرة الثalة، يمكننا الحديث عن أهمية الصبر في مواجهة التحديات. هذه السورة تحتوي على دروس قيمة عن الصبر والثقة بالله في أوقات الشدة.<br><br>أخيرًا، الفقرة الرابعة تكون دعاء للثبات. يمكن أن نضيف هنا دعاء يطلب من الله القوة والثبات على الحق، مع إضافة بعض التأملات حول أهمية الاعتماد على الله.",
+            ar: "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ<br>الم ۝ ٱللَّهُ لَآ إِلَٰهَ إِلَّا هُوَ ٱلْحَىُّ ٱلْقَيُّومُ<br><br>هذه الفقرة الأولى تتحدث عن توحيد الله. يمكن أن نذكر هنا أهمية الإيمان بوحدانية الله وكيف أن هذا الاعتقاد يشكل أساس العقيدة الإسلامية.<br><br>الفقرة الثانية قد تتناول قصة عائلة عمران. يمكن أن نشير إلى قصة مريم وميلاد عيسى عليهما السلام، مع التركيز على الدروس الأخلاقية المستفادة من هذه القصة.<br><br>في الفقرة الثالثة، يمكننا الحديث عن أهمية الصبر في مواجهة التحديات. هذه السورة تحتوي على دروس قيمة عن الصبر والثقة بالله في أوقات الشدة.<br><br>أخيرًا، الفقرة الرابعة تكون دعاء للثبات. يمكن أن نضيف هنا دعاء يطلب من الله القوة والثبات على الحق، مع إضافة بعض التأملات حول أهمية الاعتماد على الله.",
             en: "In the name of Allah, the Most Gracious, the Most Merciful<br>Alif Lam Mim. Allah, there is no deity except Him, the Ever-Living, the Sustainer of existence<br><br>This first paragraph discusses the oneness of Allah. We can mention here the importance of believing in Allah’s unity and how this belief forms the foundation of Islamic faith.<br><br>The second paragraph might address the story of the family of Imran. We can refer to the story of Maryam and the birth of Jesus (peace be upon them), focusing on the moral lessons derived from this story.<br><br>In the third paragraph, we can talk about the importance of patience in facing challenges. This chapter contains valuable lessons about patience and trust in Allah during difficult times.<br><br>Finally, the fourth paragraph is a prayer for steadfastness. We can add here a prayer asking Allah for strength and steadfastness in the truth, with some reflections on the importance of relying on Allah.",
             fr: "Au nom d'Allah, le Tout Miséricordieux, le Très Miséricordieux<br>Alif Lam Mim. Allah, il n'y a de divinité sauf Lui, le Vivant, le Subsistant<br><br>Ce premier paragraphe parle de l’unicité d’Allah. Nous pouvons mentionner ici l’importance de croire en l’unicité d’Allah et comment cette croyance forme la base de la foi islamique.<br><br>Le deuxième paragraphe pourrait aborder l’histoire de la famille d’Imran. Nous pouvons faire référence à l’histoire de Maryam et de la naissance de Jésus (paix sur eux), en mettant l’accent sur les leçons morales tirées de cette histoire.<br><br>Dans le troisième paragraphe, nous pouvons parler de l’importance de la patience face aux défis. Ce chapitre contient des leçons précieuses sur la patience et la confiance en Allah dans les moments difficiles.<br><br>Enfin, le quatrième paragraphe est une prière pour la constance. Nous pouvons ajouter ici une prière demandant à Allah la force et la constance dans la vérité, avec quelques réflexions sur l’importance de s’en remettre à Allah."
         },
@@ -70,12 +71,12 @@ document.addEventListener('DOMContentLoaded', () => {
             fr: "Au nom d'Allah, le Tout Miséricordieux, le Très Miséricordieux<br>Ô hommes, craignez votre Seigneur qui vous a créés d'une seule âme...<br><br>Ce premier paragraphe parle de la création de l’humanité. Nous pouvons mentionner ici comment Allah a créé les humains à partir d’une seule âme, et comment cette création reflète la puissance immense d’Allah.<br><br>Le deuxième paragraphe aborde les droits des femmes en Islam. Ce chapitre contient des enseignements sur le traitement des femmes avec justice et bonté, et nous pouvons discuter de l’importance de ces valeurs.<br><br>Dans le troisième paragraphe, nous pouvons discuter de l’importance de la justice dans les transactions. Nous pouvons parler de la manière de traiter les orphelins et de gérer les finances avec honnêteté et transparence.<br><br>Le quatrième paragraphe est une réflexion sur la piété. Nous pouvons ajouter ici une prière demandant à Allah la piété et la sincérité dans les actions, ainsi que quelques conseils pratiques pour y parvenir."
         },
         5: {
-            ar: "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ<br>يَٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوٓا۟ أَوْفُوا۟ بِٱلْعُقُودِ<br><br>هذه الفقرة الأولى تتحدث عن أهمية الوفاء بالعهود. يمكن أن نذكر هنا كيف أن الالتزام بالعهود هو من صفات المؤمنين الصادقين.<br><br>الفقرة الثanية تتناول الأحكام المتعلقة بالطعام. يمكن أن نتحدث عن الأطعمة المحللة والمحرمة، مع شرح الأسباب الروhية والصحية وراء هذه الأحكام.<br><br>في الفقرة الثالثة، يمكننا مناقشة أهمية العدل في القضاء. هذه السورة تحتوي على تعاليم حول كيفية إقامة العدل بين الناس، حتى في أصعب الظروف.<br><br>أخيرًا، الفقرة الرابعة تكون دعاء للثبات على الإيمان. يمكن أن نضيف هنا دعاء يطلب من الله الهداية والثبات في مواجهة التحديات.",
+            ar: "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ<br>يَٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوٓا۟ أَوْفُوا۟ بِٱلْعُقُودِ<br><br>هذه الفقرة الأولى تتحدث عن أهمية الوفاء بالعهود. يمكن أن نذكر هنا كيف أن الالتزام بالعهود هو من صفات المؤمنين الصادقين.<br><br>الفقرة الثانية تتناول الأحكام المتعلقة بالطعام. يمكن أن نتحدث عن الأطعمة المحللة والمحرمة، مع شرح الأسباب الروحية والصحية وراء هذه الأحكام.<br><br>في الفقرة الثالثة، يمكننا مناقشة أهمية العدل في القضاء. هذه السورة تحتوي على تعاليم حول كيفية إقامة العدل بين الناس، حتى في أصعب الظروف.<br><br>أخيرًا، الفقرة الرابعة تكون دعاء للثبات على الإيمان. يمكن أن نضيف هنا دعاء يطلب من الله الهداية والثبات في مواجهة التحديات.",
             en: "In the name of Allah, the Most Gracious, the Most Merciful<br>O you who have believed, fulfill [all] contracts...<br><br>This first paragraph discusses the importance of fulfilling promises. We can mention here how keeping promises is a trait of truthful believers.<br><br>The second paragraph addresses the rulings related to food. We can talk about permissible and prohibited foods, explaining the spiritual and health reasons behind these rulings.<br><br>In the third paragraph, we can discuss the importance of justice in judgment. This chapter contains teachings about establishing justice among people, even in the most difficult circumstances.<br><br>Finally, the fourth paragraph is a prayer for steadfastness in faith. We can add here a prayer asking Allah for guidance and steadfastness in facing challenges.",
             fr: "Au nom d'Allah, le Tout Miséricordieux, le Très Miséricordieux<br>Ô vous qui avez cru, remplissez les contrats...<br><br>Ce premier paragraphe parle de l’importance de respecter les engagements. Nous pouvons mentionner ici comment tenir ses promesses est une caractéristique des croyants sincères.<br><br>Le deuxième paragraphe aborde les règles relatives à la nourriture. Nous pouvons parler des aliments autorisés et interdits, en expliquant les raisons spirituelles et sanitaires derrière ces règles.<br><br>Dans le troisième paragraphe, nous pouvons discuter de l’importance de la justice dans le jugement. Ce chapitre contient des enseignements sur l’établissement de la justice parmi les gens, même dans les circonstances les plus difficiles.<br><br>Enfin, le quatrième paragraphe est une prière pour la constance dans la foi. Nous pouvons ajouter ici une prière demandant à Allah la guidance et la constance face aux défis."
         },
         44: {
-            ar: "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ<br>حٰمٓ ۚ وَٱلْكِتَٰبِ ٱلْمُبِينِ<br><br>هذه الفقرة الأولى تتحدث عن وضوح الكتاب. يمكن أن نذكر هنا كيف أن هذا الكتاب يحتوي على آيات واضحة تهدي الناس إلى الحق.<br><br>الفقرة الثانية تتناول قصة موسى وفرعون. يمكن أن نتحدث عن كيف أن الله أنقذ بني إسرائيل من فرعون، مع التركيز على عظمة الله.<br><br>في الفقرة الثالثة، يمكننا مناقشة أهمية الشكر لله. هذه السورة تحتوي على دروس حول شكر النعم في أوقات الرخاء والشدة.<br><br>أخيرًا، الفقرة الر第四ة تكون دعاء للشكر. يمكن أن نضيف هنا دعاء يطلب من الله زيادة النعم وقبول الشكر.",
+            ar: "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ<br>حٰمٓ ۚ وَٱلْكِتَٰبِ ٱلْمُبِينِ<br><br>هذه الفقرة الأولى تتحدث عن وضوح الكتاب. يمكن أن نذكر هنا كيف أن هذا الكتاب يحتوي على آيات واضحة تهدي الناس إلى الحق.<br><br>الفقرة الثانية تتناول قصة موسى وفرعون. يمكن أن نتحدث عن كيف أن الله أنقذ بني إسرائيل من فرعون، مع التركيز على عظمة الله.<br><br>في الفقرة الثالثة، يمكننا مناقشة أهمية الشكر لله. هذه السورة تحتوي على دروس حول شكر النعم في أوقات الرخاء والشدة.<br><br>أخيرًا، الفقرة الرابعة تكون دعاء للشكر. يمكن أن نضيف هنا دعاء يطلب من الله زيادة النعم وقبول الشكر.",
             en: "In the name of Allah, the Most Gracious, the Most Merciful<br>Ha Mim. By the clear Book...<br><br>This first paragraph talks about the clarity of the Book. We can mention here how this Book contains clear verses that guide people to the truth.<br><br>The second paragraph addresses the story of Musa and Pharaoh. We can talk about how Allah saved the Children of Israel from Pharaoh, focusing on Allah’s greatness.<br><br>In the third paragraph, we can discuss the importance of gratitude to Allah. This chapter contains lessons about thanking Allah in times of ease and hardship.<br><br>Finally, the fourth paragraph is a prayer for gratitude. We can add here a prayer asking Allah for an increase in blessings and acceptance of gratitude.",
             fr: "Au nom d'Allah, le Tout Miséricordieux, le Très Miséricordieux<br>Ha Mim. Par le Livre clair...<br><br>Ce premier paragraphe parle de la clarté du Livre. Nous pouvons mentionner ici comment ce Livre contient des versets clairs qui guident les gens vers la vérité.<br><br>Le deuxième paragraphe aborde l’histoire de Musa et Pharaon. Nous pouvons parler de la manière dont Allah a sauvé les Enfants d’Israël de Pharaon, en mettant l’accent sur la grandeur d’Allah.<br><br>Dans le troisième paragraphe, nous pouvons discuter de l’importance de la gratitude envers Allah. Ce chapitre contient des leçons sur le fait de remercier Allah en temps de facilité et de difficulté.<br><br>Enfin, le quatrième paragraphe est une prière pour la gratitude. Nous pouvons ajouter ici une prière demandant à Allah une augmentation des bienfaits et l’acceptation de la gratitude."
         }
@@ -100,10 +101,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.index-page li').forEach(li => {
         li.addEventListener('click', () => {
-            currentSura = parseInt(li.getAttribute('data-sura'));
-            loadSuraContent();
-            indexPage.style.display = 'none';
-            readingPage.style.display = 'block';
+            const suraNumber = parseInt(li.getAttribute('data-sura'));
+            if (suraNumber <= 9 || hasPurchased) {
+                currentSura = suraNumber;
+                loadSuraContent();
+                indexPage.style.display = 'none';
+                readingPage.style.display = 'block';
+            } else {
+                showPaymentPopup(); // Ouvre la popup pour les chapitres payants
+            }
         });
     });
 
@@ -116,8 +122,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelector('.next-btn').addEventListener('click', () => {
         if (currentSura < 44) {
-            currentSura++;
-            loadSuraContent();
+            if (currentSura >= 9 && !hasPurchased) {
+                showPaymentPopup();
+            } else {
+                currentSura++;
+                loadSuraContent();
+            }
         }
     });
 
@@ -201,10 +211,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const li = document.createElement('li');
             li.textContent = `Sourate ${sura}`;
             li.addEventListener('click', () => {
-                currentSura = sura;
-                loadSuraContent();
-                favoritesPage.style.display = 'none';
-                readingPage.style.display = 'block';
+                if (sura <= 9 || hasPurchased) {
+                    currentSura = sura;
+                    loadSuraContent();
+                    favoritesPage.style.display = 'none';
+                    readingPage.style.display = 'block';
+                } else {
+                    showPaymentPopup();
+                }
             });
             favoritesList.appendChild(li);
         });
@@ -258,9 +272,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 div.className = 'result-item';
                 div.textContent = `Sourate ${sura}`;
                 div.addEventListener('click', () => {
-                    currentSura = parseInt(sura);
-                    loadSuraContent();
-                    searchResults.style.display = 'none';
+                    const suraNumber = parseInt(sura);
+                    if (suraNumber <= 9 || hasPurchased) {
+                        currentSura = suraNumber;
+                        loadSuraContent();
+                        searchResults.style.display = 'none';
+                    } else {
+                        showPaymentPopup();
+                    }
                 });
                 searchResults.appendChild(div);
             }
@@ -355,4 +374,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialisation
     loadSuraContent();
     loadFavorites();
+
+    // Gestion des redirections après paiement
+    const urlParams = new URLSearchParams(window.location.search);
+    if (window.location.pathname === '/success') {
+        localStorage.setItem('hasPurchased', 'true');
+        hasPurchased = true;
+        alert('Paiement réussi ! Vous avez maintenant accès à tous les chapitres.');
+        window.location.href = window.location.origin;
+    } else if (window.location.pathname === '/cancel') {
+        alert('Paiement annulé. Vous pouvez réessayer à tout moment.');
+        window.location.href = window.location.origin;
+    }
 });
