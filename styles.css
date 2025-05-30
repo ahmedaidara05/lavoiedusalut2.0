@@ -148,7 +148,6 @@ header h1 {
     text-align: center;
 }
 
-/* Ajustement pour les écrans plus petits (téléphones) */
 @media (max-width: 600px) {
     .search-bar {
         margin-top: 70px;
