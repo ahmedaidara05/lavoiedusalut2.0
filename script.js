@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let notes = JSON.parse(localStorage.getItem('notes')) || {};
     let currentSura = 1;
     let isPlaying = false;
-    let synth = window.speechSynthesis;
+    const synth = window.speechSynthesis;
     let currentFontSize = 16;
 
     // Contenu des 44 sourates en arabe, anglais et français (avec 4 paragraphes pour 1-5 et 44)
@@ -444,25 +444,24 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    // Compter les occurrences totales et collecter les résultats
+    // Compter les occurrences totales et collecter
     let totalOccurrences = 0;
     let resultsBySura = {};
 
     for (let sura in suraContents) {
         const content = suraContents[sura][languageSelect.value] || '';
-        // Séparer par <br> pour préserver le formatage
         const verses = content.split('<br>').filter(verse => verse.trim());
         let suraMatches = [];
 
         verses.forEach((verse, verseIndex) => {
-            const lowerVerse = verse.toLowerCase().replace(/<[^>]+>/g, ''); // Nettoyer les balises pour la recherche uniquement
+            const lowerVerse = verse.toLowerCase().replace(/<[^>]+>/g, '');
             let matchCount = (lowerVerse.match(new RegExp(`\\b${query}\\b`, 'g')) || []).length;
             
             if (matchCount > 0) {
                 totalOccurrences += matchCount;
                 suraMatches.push({
-                    verseText: verse, // Conserver le texte original avec balises HTML
-                    verseIndex: verseIndex + 1, // Numérotation des versets commence à 1
+                    verseText: verse,
+                    verseIndex: verseIndex + 1,
                     occurrences: matchCount
                 });
             }
@@ -482,20 +481,20 @@ document.addEventListener('DOMContentLoaded', () => {
     totalDiv.textContent = `Total occurrences: ${totalOccurrences}`;
     searchResults.appendChild(totalDiv);
 
-    // Afficher les résultats par sourate
+    // Afficher les résultats par chapitre
     for (let sura in resultsBySura) {
-        // Afficher le nom de la sourate en gras
+        // Afficher le nom du chapitre en gras
         const suraDiv = document.createElement('div');
         suraDiv.className = 'result-sura';
         suraDiv.innerHTML = `<strong>Chapitre ${sura}</strong>`;
         searchResults.appendChild(suraDiv);
 
-        // Afficher chaque verset correspondant
+        // Afficher chaque paragraphe correspondant
         resultsBySura[sura].forEach(match => {
             const verseDiv = document.createElement('div');
             verseDiv.className = 'result-item';
             
-            // Mettre en surbrillance le mot recherché tout en préservant les balises HTML
+            // Mettre en surbrillance le mot recherché
             const highlightedText = match.verseText.replace(
                 new RegExp(`\\b${query}\\b`, 'gi'),
                 match => `<span class="highlight">${match}</span>`
@@ -506,7 +505,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Ajouter un événement de clic pour rediriger
             verseDiv.addEventListener('click', () => {
                 currentSura = parseInt(sura);
-                loadSuraContent(match.verseIndex); // Passer l'index du verset
+                loadSuraContent(match.verseIndex);
                 searchResults.style.display = 'none';
                 const verseElement = document.getElementById(`verse-${match.verseIndex}`);
                 if (verseElement) {
@@ -537,23 +536,98 @@ document.addEventListener('click', (e) => {
 });
     
     // Lecture à haute voix
-    voicePlayBtn.addEventListener('click', () => {
-        if (isPlaying) {
-            synth.cancel();
-            isPlaying = false;
-            voicePlayBtn.innerHTML = '<i class="fas fa-play"></i> Lecture à haute voix';
-        } else {
-            const utterance = new SpeechSynthesisUtterance(arabicText.innerText || textContent.innerText);
-            utterance.lang = languageSelect.value === 'ar' ? 'ar-SA' : languageSelect.value === 'en' ? 'en-US' : 'fr-FR';
-            utterance.onend = () => {
-                isPlaying = false;
-                voicePlayBtn.innerHTML = '<i class="fas fa-play"></i> Lecture à haute voix';
-            };
-            synth.speak(utterance);
-            isPlaying = true;
-            voicePlayBtn.innerHTML = '<i class="fas fa-pause"></i> Pause';
+voicePlayBtn.addEventListener('click', () => {
+    if (!window.speechSynthesis) {
+        console.log("Synthèse vocale non prise en charge par ce navigateur.");
+        return;
+    }
+
+    const synth = window.speechSynthesis;
+    
+    if (isPlaying) {
+        synth.cancel();
+        isPlaying = false;
+        voicePlayBtn.innerHTML = '<i class="fas fa-play"></i> Lecture à haute voix';
+        return;
+    }
+
+    // Extraire tout le contenu du chapitre
+    const textToRead = languageSelect.value === 'ar' ? arabicText.innerText : textContent.innerText;
+    
+    if (!textToRead || textToRead.trim() === '') {
+        console.log("Aucun texte disponible pour la lecture.");
+        return;
+    }
+
+    const utterance = new SpeechSynthesisUtterance(textToRead);
+    utterance.lang = languageSelect.value === 'ar' ? 'ar-SA' : languageSelect.value === 'en' ? 'en-US' : 'fr-FR';
+
+    // Sélectionner une voix
+    const selectVoice = () => {
+        const voices = synth.getVoices();
+        let selectedVoice;
+
+        if (languageSelect.value === 'fr') {
+            selectedVoice = voices.find(voice => 
+                voice.lang === 'fr-FR' && 
+                (voice.name.toLowerCase().includes('thomas') || 
+                 voice.name.toLowerCase().includes('male') || 
+                 voice.name.toLowerCase().includes('homme'))
+            ) || voices.find(voice => voice.lang === 'fr-FR') || voices[0];
+        } else if (languageSelect.value === 'en') {
+            selectedVoice = voices.find(voice => 
+                voice.lang === 'en-US' && 
+                (voice.name.toLowerCase().includes('guy') || 
+                 voice.name.toLowerCase().includes('male') || 
+                 voice.name.toLowerCase().includes('daniel'))
+            ) || voices.find(voice => voice.lang === 'en-US') || voices[0];
+        } else if (languageSelect.value === 'ar') {
+            selectedVoice = voices.find(voice => 
+                voice.lang === 'ar-SA' && 
+                (voice.name.toLowerCase().includes('male') || 
+                 voice.name.toLowerCase().includes('homme'))
+            ) || voices.find(voice => voice.lang === 'ar-SA') || voices[0];
         }
-    });
+
+        if (selectedVoice) {
+            utterance.voice = selectedVoice;
+            console.log(`Voix sélectionnée : ${selectedVoice.name}`);
+        } else {
+            console.log("Aucune voix spécifique trouvée, utilisation de la voix par défaut.");
+        }
+    };
+
+    // Charger les voix
+    if (synth.getVoices().length === 0) {
+        synth.onvoiceschanged = () => {
+            selectVoice();
+            synth.speak(utterance);
+        };
+    } else {
+        selectVoice();
+        synth.speak(utterance);
+    }
+
+    // Paramètres de la voix
+    utterance.volume = 1;
+    utterance.rate = 1;
+    utterance.pitch = 1;
+
+    utterance.onend = () => {
+        isPlaying = false;
+        voicePlayBtn.innerHTML = '<i class="fas fa-play"></i> Lecture à haute voix';
+        console.log("Lecture terminée.");
+    };
+
+    utterance.onerror = (event) => {
+        isPlaying = false;
+        voicePlayBtn.innerHTML = '<i class="fas fa-play"></i> Lecture à haute voix';
+        console.log(`Erreur de synthèse vocale : ${event.error}`);
+    };
+
+    isPlaying = true;
+    voicePlayBtn.innerHTML = `<i class="fas fa-pause"></i> Pause`;
+});
 
     // Zoom
     document.querySelector('.zoom-in-btn').addEventListener('click', () => {
@@ -587,14 +661,12 @@ document.addEventListener('click', (e) => {
     const suraData = suraContents[currentSura] || suraContents[1];
     suraTitle.textContent = `La Voie du Salut ${currentSura}`;
     const content = suraData[languageSelect.value] || suraData.en;
-    const verses = content.split('<br>').filter(verse => verse.trim()); // Séparer par <br>
+    const verses = content.split('<br>').filter(verse => verse.trim());
     
-    // Créer des div pour chaque verset avec un identifiant
     const html = verses.map((verse, index) => 
         `<div id="verse-${index + 1}" class="verse">${verse}</div>`
     ).join('');
     
-    // Afficher selon la langue sélectionnée
     if (languageSelect.value === 'ar') {
         arabicText.innerHTML = html;
         textContent.style.display = 'none';
