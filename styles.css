@@ -51,7 +51,7 @@ header h1 {
     margin-right: 15px;
 }
 
-.close-customize-btn {
+.close-customize-btn, .close-voice-btn {
     background: none;
     border: none;
     color: #1a3c34;
