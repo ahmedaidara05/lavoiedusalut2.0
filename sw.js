@@ -2,12 +2,13 @@ self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open('v1').then((cache) => {
             return cache.addAll([
-                '/',
-                '/index.html',
-                '/styles.css',
-                '/script.js',
-                '/logo.png'
-            ]).catch(err => {
+  '/lavoiedusalut1.5/',
+  '/lavoiedusalut1.5/index.html',
+  '/lavoiedusalut1.5/styles.css',
+  '/lavoiedusalut1.5/script.js',
+  '/lavoiedusalut1.5/logo.png'
+])
+.catch(err => {
                 console.warn('Failed to cache some resources:', err);
             });
         })
@@ -24,3 +25,9 @@ self.addEventListener('fetch', (event) => {
         })
     );
 });
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js')
+    .then(reg => console.log('✅ Service Worker enregistré', reg.scope))
+    .catch(err => console.error('❌ Erreur SW:', err));
+}
