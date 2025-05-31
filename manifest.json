@@ -2,27 +2,27 @@
   "name": "La Voie du Salut",
   "short_name": "VDS",
   "description": "Une application pour explorer et méditer sur les sourates avec des outils de personnalisation et de lecture à haute voix.",
-  "start_url": "https://ahmedaidara05.github.io/lavoiedusalut1.5/",
-  "scope": "https://ahmedaidara05.github.io/lavoiedusalut1.5/",
+  "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#f5f5f0",
   "theme_color": "#2e7d32",
   "orientation": "portrait",
   "icons": [
     {
-      "src": "/lavoiedusalut1.5/logo.png",
+      "src": "logo.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/lavoiedusalut1.5/logo.png",
+      "src": "logo.png",
       "sizes": "512x512",
       "type": "image/png"
     }
   ],
   "screenshots": [
     {
-      "src": "/lavoiedusalut1.5/screenshot1.png",
+      "src": "logo.png",
       "sizes": "540x720",
       "type": "image/png"
     }
@@ -32,15 +32,15 @@
       "name": "Index des Chapitres",
       "short_name": "Index",
       "description": "Accéder directement à l'index des chapitres",
-      "url": "https://ahmedaidara05.github.io/lavoiedusalut1.5/index.html",
-      "icons": [{ "src": "/lavoiedusalut1.5/logo.png", "sizes": "192x192" }]
+      "url": "./index.html",
+      "icons": [{ "src": "logo.png", "sizes": "192x192" }]
     },
     {
       "name": "Favoris",
       "short_name": "Favoris",
       "description": "Voir les chapitres favoris",
-      "url": "https://ahmedaidara05.github.io/lavoiedusalut1.5/#favorites",
-      "icons": [{ "src": "/lavoiedusalut1.5/logo.png", "sizes": "192x192" }]
+      "url": "./#favorites",
+      "icons": [{ "src": "logo.png", "sizes": "192x192" }]
     }
   ]
 }
