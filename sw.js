@@ -6,10 +6,10 @@ self.addEventListener('install', (event) => {
                 '/index.html',
                 '/styles.css',
                 '/script.js',
-                '/payment.js',
-                '/logo.png',
-                '/cover.jpg'
-            ]).catch(err => console.error('Cache installation failed:', err));
+                '/logo.png'
+            ]).catch(err => {
+                console.warn('Failed to cache some resources:', err);
+            });
         })
     );
 });
@@ -17,14 +17,10 @@ self.addEventListener('install', (event) => {
 self.addEventListener('fetch', (event) => {
     event.respondWith(
         caches.match(event.request).then((response) => {
-            return response || fetch(event.request).then((networkResponse) => {
-                if (event.request.url.startsWith('http')) {
-                    caches.open('v1').then((cache) => {
-                        cache.put(event.request, networkResponse.clone());
-                    });
-                }
-                return networkResponse;
-            }).catch(() => caches.match('/index.html'));
+            return response || fetch(event.request).catch(() => {
+                console.warn('Network fetch failed for:', event.request.url);
+                return new Response('Resource unavailable offline', { status: 503 });
+            });
         })
     );
 });
