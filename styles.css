@@ -566,3 +566,164 @@ body.dark .start-btn {
 @media print {
     .container { display: none; }
 }
+
+#chatbot {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 350px;
+  max-height: 500px;
+  background: #1E1E1E; /* Fond sombre moderne */
+  border-radius: 15px; /* Coins plus arrondis */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 9999;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Police moderne */
+  transition: all 0.3s ease; /* Animation fluide */
+}
+
+#chatbot:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Effet au survol */
+}
+
+#messages {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  background: #2C2C2C; /* Fond des messages sombre */
+  color: #E0E0E0; /* Texte clair */
+}
+
+.message {
+  margin-bottom: 12px;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 80%;
+}
+
+.user {
+  background: #FFD700; /* Doré pour les messages envoyés */
+  color: #1E1E1E; /* Texte sombre sur fond doré */
+  margin-left: auto; /* Aligné à droite */
+  border-bottom-right-radius: 0; /* Style moderne */
+}
+
+.bot {
+  background: #FFFFFF; /* Blanc pour les messages reçus en mode clair */
+  color: #1E1E1E;
+  margin-right: auto; /* Aligné à gauche */
+  border-bottom-left-radius: 0; /* Style moderne */
+}
+
+body.dark #chatbot {
+  background: #2E2E2E; /* Fond plus sombre en mode sombre */
+}
+
+body.dark .bot {
+  background: #000000; /* Noir pour les messages reçus en mode sombre */
+  color: #E0E0E0;
+}
+
+#inputArea {
+  display: flex;
+  border-top: 1px solid #444;
+  padding: 10px;
+  background: #2A2A2A;
+}
+
+#input {
+  flex: 1;
+  border: none;
+  padding: 10px;
+  border-radius: 20px; /* Champ arrondi */
+  background: #3A3A3A;
+  color: #E0E0E0;
+  outline: none;
+  font-size: 14px;
+}
+
+#input::placeholder {
+  color: #888;
+}
+
+#send {
+  border: none;
+  background: none;
+  padding: 5px 10px;
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  color: #FFD700; /* Couleur dorée pour l'icône */
+}
+
+#send::before {
+  content: "➤"; /* Flèche moderne */
+  font-weight: bold;
+  transition: transform 0.2s;
+}
+
+#send:hover::before {
+  transform: scale(1.2); /* Zoom au survol */
+}
+
+body.dark #send {
+  color: #FFD700; /* Garder doré en mode sombre */
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background: #FFD700; /* Doré pour correspondre au thème */
+  color: #1E1E1E;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+#close-chatbot {
+  background: none;
+  border: none;
+  color: #1E1E1E;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+#close-chatbot:hover {
+  color: #FF5555; /* Rouge au survol pour indiquer la fermeture */
+}
+
+.chat-footer {
+  padding: 5px 15px;
+  text-align: right;
+}
+
+#clear-history {
+  background: #FF5555; /* Rouge pour indiquer une action destructive */
+  color: #FFFFFF;
+  border: none;
+  border-radius: 50px; /* Bouton circulaire */
+  padding: 5px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: background 0.3s;
+}
+
+#clear-history i {
+  font-size: 12px;
+}
+
+#clear-history:hover {
+  background: #FF3333;
+}
+
+body.dark #clear-history {
+  background: #FF7777;
+  color: #1E1E1E;
+}
