@@ -354,9 +354,14 @@ document.addEventListener('DOMContentLoaded', () => {
     themeSelect.addEventListener('change', (e) => {
         document.body.className = e.target.value === 'dark' ? 'dark' : '';
     });
+    
     fontSelect.addEventListener('change', (e) => {
-        document.body.style.fontFamily = e.target.value + ', serif';
+    const selectedFont = e.target.value + ', serif';
+    document.body.style.fontFamily = selectedFont; // Appliquer au body
+    document.getElementById('arabicText').style.fontFamily = selectedFont; // Appliquer à arabicText
+    document.getElementById('textContent').style.fontFamily = selectedFont; // Appliquer à textContent
     });
+    
     fontSize.addEventListener('input', (e) => {
         currentFontSize = e.target.value;
         arabicText.style.fontSize = `${currentFontSize}px`;
