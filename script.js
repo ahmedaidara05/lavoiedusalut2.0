@@ -812,16 +812,24 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Gestion de l'affichage du chatbot avec le bouton .ai-btn
-  document.querySelector('.ai-btn').addEventListener('click', () => {
+  // Variable d'état pour suivre si le chatbot est ouvert
+let isChatOpen = false;
+
+// Gestion de l'affichage du chatbot avec le bouton .ai-btn
+document.querySelector('.ai-btn').addEventListener('click', () => {
   console.log('Bouton cliqué');
   const chatbot = document.getElementById('chatbot');
-  chatbot.style.display = chatbot.style.display === 'none' ? 'flex' : 'none';
+  if (!isChatOpen) {
+    chatbot.style.display = 'flex';
+    isChatOpen = true;
+  }
 });
 
-// Ajout de l'écouteur pour fermer le chatbot
+// Gestion de la fermeture du chatbot
 document.getElementById('close-chatbot').addEventListener('click', () => {
   const chatbot = document.getElementById('chatbot');
   chatbot.style.display = 'none';
+  isChatOpen = false;
 });
 
     document.getElementById('close-chatbot').addEventListener('click', () => {
@@ -829,10 +837,10 @@ document.getElementById('close-chatbot').addEventListener('click', () => {
   chatbot.style.display = 'none';
 });
 
-// Ajout de l'écouteur pour effacer l'historique
+// Gestion de l'effacement de l'historique
 document.getElementById('clear-history').addEventListener('click', () => {
   const messages = document.getElementById('messages');
-  messages.innerHTML = ''; // Efface tout le contenu de la conversation
+  messages.innerHTML = '';
 });
     
   // Synchronisation avec votre logique existante
