@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         1: {
     ar: "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ<br><strong>ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَٰلَمِينَ</strong><br><br><span style='font-size: 24px;'>هذا النص هو مثال لمحتوى الفقرة الأولى في السورة الأولى.</span> يمكن أن يكون هذا النص طويلاً أو قصيرًا حسب الحاجة، وهو هنا فقط لمحاكاة المحتوى الحقيقي الذي ستقوم بإضافته لاحقًا.<br><br>هذه الفقرة الثانية تتحدث عن موضوع آخر. <strong>ربما تكون هذه الفقرة تتناول تفاصيل إضافية أو قصة معينة مرتبطة بالسورة.</strong> يمكن أن تكون هذه الجملة أطول قليلاً لتوضيح الفكرة بشكل أفضل.<br><br><span style='font-size: 16px;'>الفقرة الثالثة قد تحتوي على تعليمات أو دروس مستفادة.</span> هنا يمكن أن نضيف بعض التفاصيل التي تجعل النص أكثر غنى وإفادة، مع الحفاظ على اللغة الطبيعية والسلسة.<br><br>أما الفقرة الرابعة فهي الختامية. يمكن أن تكون هذه الفقرة دعاء أو تأمل يلخص المعاني التي تم تناولها في السورة، مع إضافة بعض العبارات التي تعزز من الروحانية.",
     en: "In the name of Allah, the Most Gracious, the Most Merciful<br><strong>Praise be to Allah, the Lord of all the worlds</strong><br><br><span style='font-size: 24px;'>This text is an example of the first paragraph in the first chapter.</span> It can be long or short depending on the need, and it’s here just to simulate the real content you’ll add later.<br><br>The second paragraph discusses another topic. <strong>Perhaps this paragraph delves into additional details or a specific story related to the chapter.</strong> This sentence might be a bit longer to better clarify the idea.<br><br><span style='font-size: 16px;'>The third paragraph might contain instructions or lessons learned.</span> Here we can add some details that make the text richer and more informative, while keeping the language natural and smooth.<br><br>As for the fourth paragraph, it’s the concluding one. This paragraph could be a prayer or a reflection summarizing the meanings discussed in the chapter, with some phrases added to enhance the spiritual tone.",
-    fr: "Au nom d'Allah, le Tout Miséricordieux, le Très Miséricordieux<br><strong>Louange à Allah, Seigneur des mondes</strong><br><br><span style='font-size: 50px;'>Ce texte est un exemple du premier paragraphe du premier chapitre.</span> Il peut être long ou court selon les besoins, et il est ici uniquement pour simuler le contenu réel que vous ajouterez plus tard.<br><br>Le deuxième paragraphe aborde un autre sujet. <strong>Peut-être que ce paragraphe explore des détails supplémentaires ou une histoire spécifique liée au chapitre.</strong> Cette phrase peut être un peu plus longue pour mieux clarifier l’idée.<br><br><span style='font-size: 16px;'>Le troisième paragraphe peut contenir des instructions ou des leçons tirées.</span> Ici, nous pouvons ajouter des détails qui rendent le texte plus riche et informatif, tout en maintenant un langage naturel et fluide.<br><br>Quant au quatrième paragraphe, il est conclusif. Ce paragraphe pourrait être une prière ou une réflexion résumant les significations abordées dans le chapitre, avec quelques phrases ajoutées pour renforcer la tonalité spirituelle."
+    fr: "Au nom d'Allah, le Tout Miséricordieux, le Très Miséricordieux<br><strong>Louange à Allah, Seigneur des mondes</strong><br><br><span style='font-size: 25px;'>Ce texte est un exemple du premier paragraphe du premier chapitre.</span> Il peut être long ou court selon les besoins, et il est ici uniquement pour simuler le contenu réel que vous ajouterez plus tard.<br><br>Le deuxième paragraphe aborde un autre sujet. <strong>Peut-être que ce paragraphe explore des détails supplémentaires ou une histoire spécifique liée au chapitre.</strong> Cette phrase peut être un peu plus longue pour mieux clarifier l’idée.<br><br><span style='font-size: 16px;'>Le troisième paragraphe peut contenir des instructions ou des leçons tirées.</span> Ici, nous pouvons ajouter des détails qui rendent le texte plus riche et informatif, tout en maintenant un langage naturel et fluide.<br><br>Quant au quatrième paragraphe, il est conclusif. Ce paragraphe pourrait être une prière ou une réflexion résumant les significations abordées dans le chapitre, avec quelques phrases ajoutées pour renforcer la tonalité spirituelle."
         },
         2: {
             ar: "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ<br>ذَٰلِكَ ٱلْكِتَٰبُ لَا رَيْبَ ۖ فِيهِ هُدًى لِّلْمُتَّقِينَ<br><br>هذه السورة تبدأ بتأكيد أهمية الكتاب المقدس. هذا النص يمكن أن يحتوي على تفاصيل عن كيفية استخدام هذا الكتاب كمرجع للحياة اليومية، مع إضافة بعض الأمثلة العملية.<br><br>الفقرة التالية قد تتحدث عن المتقين وصفاتهم. يمكن أن نذكر هنا كيف يمكن للإنسان أن يصبح من المتقين من خلال اتباع تعاليم الدين والالتزام بالأخلاق الحميدة.<br><br>في هذه الفقرة الثالثة، يمكننا مناقشة أهمية الصلاة والزكاة. هذه العبادات تعتبر من أركان الإسلام، ويمكن أن نتحدث عن تأثيرها الروحي والاجتماعي على الفرد والمجتمع.<br><br>أخيرًا، هذه الفقرة الرابعة تلخص الفوائد الروحية لهذه السورة. يمكن أن نتحدث عن الطمأنينة التي يجلبها الإيمان، مع دعاء يطلب الهداية والثبات على الصراط المستقيم.",
@@ -278,15 +278,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.querySelectorAll('.close-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            if (indexPage.style.display === 'block') indexPage.style.display = 'none';
-            if (readingPage.style.display === 'block') readingPage.style.display = 'none';
-            if (settingsPanel.style.display === 'block') settingsPanel.style.display = 'none';
-            if (favoritesPage.style.display === 'block') favoritesPage.style.display = 'none';
-            if (notesPage.style.display === 'block') notesPage.style.display = 'none';
+    btn.addEventListener('click', () => {
+        if (indexPage.style.display === 'block') {
+            indexPage.style.display = 'none';
             homePage.style.display = 'block';
-        });
+        } else if (settingsPanel.style.display === 'block') {
+            settingsPanel.style.display = 'none';
+            readingPage.style.display = 'block'; // Retour à la page de lecture
+        } else if (favoritesPage.style.display === 'block') {
+            favoritesPage.style.display = 'none';
+            readingPage.style.display = 'block'; // Retour à la page de lecture
+        } else if (notesPage.style.display === 'block') {
+            notesPage.style.display = 'none';
+            readingPage.style.display = 'block'; // Retour à la page de lecture
+        } else if (readingPage.style.display === 'block') {
+            readingPage.style.display = 'none';
+            homePage.style.display = 'block';
+        }
     });
+});
 
     document.querySelectorAll('.index-page li').forEach(li => {
         li.addEventListener('click', () => {
@@ -352,6 +362,22 @@ document.addEventListener('DOMContentLoaded', () => {
         arabicText.style.fontSize = `${currentFontSize}px`;
         textContent.style.fontSize = `${currentFontSize}px`;
     });
+
+    document.addEventListener('DOMContentLoaded', () => {
+    // Ciblage du bouton retour dans les paramètres
+    const settingsBackBtn = document.querySelector('#settingsPanel .close-btn');
+    const readingPage = document.getElementById('readingPage');
+    const settingsPanel = document.getElementById('settingsPanel');
+
+    if (settingsBackBtn) {
+        settingsBackBtn.addEventListener('click', () => {
+            // On cache les paramètres
+            settingsPanel.style.display = 'none';
+            // On montre la page de lecture
+            readingPage.style.display = 'block';
+        });
+    }
+});
 
     // Authentification
     document.querySelectorAll('.auth-btn').forEach(btn => {
