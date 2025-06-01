@@ -38,11 +38,11 @@
                 <li data-sura="1"><span class="sura-number">1</span> Préambule<br>à la Page 1 de la page 1<br>Nombre aya 7 <i class="fas fa-mosque"></i></li>
                 <li data-sura="2"><span class="sura-number">2</span> Avant-propos<br>à la Page 2 de la page 49<br>Nombre aya 286 <i class="fas fa-mosque"></i></li>
                 <li data-sura="3"><span class="sura-number">3</span> La Genese<br>à la Page 50 de la page 76<br>Nombre aya 200 <i class="fas fa-mosque"></i></li>
-                <li data-sura="4"><span class="sura-number">4</span> Surat An-Nisa<br>à la Page 77 de la page 106<br>Nombre aya 176 <i class="fas fa-mosque"></i></li>
-                <li data-sura="5"><span class="sura-number">5</span> Surat Al-Ma'idah<br>à la Page 106 de la page 127<br>Nombre aya 120 <i class="fas fa-mosque"></i></li>
-                <li data-sura="6"><span class="sura-number">6</span> Surat Al-An'am<br>à la Page 128 de la page 150<br>Nombre aya 165 <i class="fas fa-mosque"></i></li>
-                <li data-sura="7"><span class="sura-number">7</span> Surat Al-A'raf<br>à la Page 151 de la page 176<br>Nombre aya 206 <i class="fas fa-mosque"></i></li>
-                <li data-sura="8"><span class="sura-number">8</span> Surat Al-Anfal<br>à la Page 177 de la page 197<br>Nombre aya 75 <i class="fas fa-mosque"></i></li>
+                <li data-sura="4"><span class="sura-number">4</span> QUI-SUIS JE<br>à la Page 77 de la page 106<br>Nombre aya 176 <i class="fas fa-mosque"></i></li>
+                <li data-sura="5"><span class="sura-number">5</span> QUI MA CREE<br>à la Page 106 de la page 127<br>Nombre aya 120 <i class="fas fa-mosque"></i></li>
+                <li data-sura="6"><span class="sura-number">6</span> POURQUOI<br>à la Page 128 de la page 150<br>Nombre aya 165 <i class="fas fa-mosque"></i></li>
+                <li data-sura="7"><span class="sura-number">7</span> QUEST CE QUI<br>à la Page 151 de la page 176<br>Nombre aya 206 <i class="fas fa-mosque"></i></li>
+                <li data-sura="8"><span class="sura-number">8</span> Ou irai je<br>à la Page 177 de la page 197<br>Nombre aya 75 <i class="fas fa-mosque"></i></li>
                 <li data-sura="9"><span class="sura-number">9</span> Surat At-Tawbah<br>à la Page 198 de la page 223<br>Nombre aya 129 <i class="fas fa-mosque"></i></li>
                 <li data-sura="10"><span class="sura-number">10</span> Surat Yunus<br>à la Page 224 de la page 247<br>Nombre aya 109 <i class="fas fa-mosque"></i></li>
                 <li data-sura="11"><span class="sura-number">11</span> Surat Hud<br>à la Page 248 de la page 271<br>Nombre aya 123 <i class="fas fa-mosque"></i></li>
@@ -78,7 +78,7 @@
                 <li data-sura="41"><span class="sura-number">41</span> Surat Fussilat<br>à la Page 667 de la page 675<br>Nombre aya 54 <i class="fas fa-mosque"></i></li>
                 <li data-sura="42"><span class="sura-number">42</span> Surat Ash-Shura<br>à la Page 676 de la page 684<br>Nombre aya 53 <i class="fas fa-mosque"></i></li>
                 <li data-sura="43"><span class="sura-number">43</span> Surat Az-Zukhruf<br>à la Page 685 de la page 694<br>Nombre aya 89 <i class="fas fa-mosque"></i></li>
-                <li data-sura="44"><span class="sura-number">44</span> Surat Ad-Dukhan<br>à la Page 695 de la page 699<br>Nombre aya 59 <i class="fas fa-mosque"></i></li>
+                <li data-sura="44"><span class="sura-number">44</span> APOCALYPSE<br>à la Page 695 de la page 699<br>Nombre aya 59 <i class="fas fa-mosque"></i></li>
             </ul>
         </div>
 
@@ -197,7 +197,8 @@
             </header>
             <ul id="favoritesList"></ul>
         </div>
-
+        
+        
         <!-- Page Notes -->
         <div class="notes-page" id="notesPage" style="display: none;">
             <header>
@@ -211,6 +212,24 @@
             </div>
         </div>
     </div>
+    
+    <!-- ASSISTANT IA -->
+        <div id="chatbot">
+  <div class="chat-header">
+    <span>Assistant IA</span>
+    <button id="close-chatbot"><i class="fas fa-times"></i></button>
+  </div>
+  <div id="messages"></div>
+  <div class="chat-footer">
+    <button id="clear-history"><i class="fas fa-trash"></i> Effacer</button>
+  </div>
+  <div id="inputArea">
+    <input type="text" id="input" placeholder="Pose ta question..." />
+    <button id="send"></button>
+  </div>
+</div>
+    
     <script src="script.js"></script>
+    
 </body>
 </html>
