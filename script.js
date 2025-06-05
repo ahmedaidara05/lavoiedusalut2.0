@@ -607,6 +607,33 @@ sendBtn.onclick = () => {
         }
     });
 
+    // Fermer customizePanel et chatbot lorsqu'on clique à l'extérieur
+document.addEventListener('click', (e) => {
+    // Gestion de searchResults (déjà existant)
+    if (!searchBar.contains(e.target) && !searchResults.contains(e.target)) {
+        searchResults.style.display = 'none';
+    }
+
+    // Fermer customizePanel si le clic est à l'extérieur
+    if (
+        customizePanel.style.display === 'block' &&
+        !customizePanel.contains(e.target) &&
+        !document.querySelector('.customize-btn').contains(e.target)
+    ) {
+        customizePanel.style.display = 'none';
+    }
+
+    // Fermer chatbot si le clic est à l'extérieur
+    if (
+        isChatOpen &&
+        !document.getElementById('chatbot').contains(e.target) &&
+        !document.querySelector('.ai-btn').contains(e.target)
+    ) {
+        document.getElementById('chatbot').style.display = 'none';
+        isChatOpen = false;
+    }
+});
+
     // Lecture à haute voix
     voicePlayBtn.addEventListener('click', () => {
         if (!synth) {
@@ -758,33 +785,42 @@ sendBtn.onclick = () => {
         }
     }
 
-    // Charger les paramètres sauvegardés
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-        themeSelect.value = savedTheme;
-        document.documentElement.className = savedTheme === 'dark' ? 'dark' : '';
-    }
+// Charger les paramètres sauvegardés
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+    themeSelect.value = savedTheme;
+    document.documentElement.className = savedTheme === 'dark' ? 'dark' : '';
+}
 
-    const savedFont = localStorage.getItem('font');
-    if (savedFont) {
-        fontSelect.value = savedFont;
-        document.body.style.fontFamily = `${savedFont}, sans-serif`;
-        arabicText.style.fontFamily = `${savedFont}, sans-serif`;
-        textContent.style.fontFamily = `${savedFont}, sans-serif`;
-    }
+const savedFont = localStorage.getItem('font');
+if (savedFont) {
+    fontSelect.value = savedFont;
+    document.body.style.fontFamily = `${savedFont}, sans-serif`;
+    arabicText.style.fontFamily = `${savedFont}, sans-serif`;
+    textContent.style.fontFamily = `${savedFont}, sans-serif`;
+} else {
+    fontSelect.value = 'IBM Plex Sans'; // Police par défaut
+    document.body.style.fontFamily = 'IBM Plex Sans, sans-serif';
+    arabicText.style.fontFamily = 'IBM Plex Sans, sans-serif';
+    textContent.style.fontFamily = 'IBM Plex Sans, sans-serif';
+    localStorage.setItem('font', 'IBM Plex Sans'); // Sauvegarder la valeur par défaut
+}
 
-    const savedFontSize = localStorage.getItem('fontSize');
-    if (savedFontSize) {
-        currentFontSize = parseInt(savedFontSize);
-        fontSize.value = currentFontSize;
-        arabicText.style.fontSize = `${savedFontSize}px`;
-        textContent.style.fontSize = `${savedFontSize}px`;
-    }
+const savedFontSize = localStorage.getItem('fontSize');
+if (savedFontSize) {
+    currentFontSize = parseInt(savedFontSize);
+    fontSize.value = currentFontSize;
+    arabicText.style.fontSize = `${savedFontSize}px`;
+    textContent.style.fontSize = `${savedFontSize}px`;
+}
 
-    const savedBgColor = localStorage.getItem('backgroundColor');
-    if (savedBgColor) {
-        document.body.style.backgroundColor = savedBgColor;
-    }
+const savedBgColor = localStorage.getItem('backgroundColor');
+if (savedBgColor) {
+    document.body.style.backgroundColor = savedBgColor;
+} else {
+    document.body.style.backgroundColor = '#d2c9a3'; // Couleur par défaut
+    localStorage.setItem('backgroundColor', '#d2c9a3'); // Sauvegarder la valeur par défaut
+}
 
     // Initialisation
     loadSuraContent();
