@@ -584,6 +584,18 @@ body.dark .start-btn {
   transition: all 0.3s ease;
 }
 
+/* Media query pour les écrans mobiles (largeur inférieure à 600px) */
+@media screen and (max-width: 600px) {
+  #chatbot {
+    width: 90%; /* Réduit la largeur pour s'adapter à l'écran */
+    max-width: 350px; /* Limite la largeur maximale */
+    left: 50%; /* Centre horizontalement */
+    transform: translateX(-50%); /* Déplace de moitié de sa largeur pour un centrage parfait */
+    right: auto; /* Supprime la propriété right pour éviter les conflits */
+    bottom: 10px; /* Réduit légèrement l'espace du bas pour mobile */
+  }
+}
+
 #chatbot:hover {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
@@ -656,16 +668,6 @@ body.dark .bot {
   cursor: pointer;
   font-size: 18px;
   color: #255e28; /* Couleur verte pour l'icône */
-}
-
-#send::before {
-  content: "➤";
-  font-weight: bold;
-  transition: transform 0.2s;
-}
-
-#send:hover::before {
-  transform: scale(1.2);
 }
 
 body.dark #send {
