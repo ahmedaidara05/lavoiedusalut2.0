@@ -569,10 +569,11 @@ body.dark .start-btn {
 
 #chatbot {
   position: fixed;
+  top: 80px;
   bottom: 20px;
   right: 20px;
   width: 350px;
-  max-height: 500px;
+  max-height: 90vh;
   background: #d2c9a3; /* Fond du chat modifié */
   border-radius: 15px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -592,7 +593,9 @@ body.dark .start-btn {
     left: 50%; /* Centre horizontalement */
     transform: translateX(-50%); /* Déplace de moitié de sa largeur pour un centrage parfait */
     right: auto; /* Supprime la propriété right pour éviter les conflits */
+    top: 70px;
     bottom: 10px; /* Réduit légèrement l'espace du bas pour mobile */
+    max-height: 70vh;
   }
 }
 
