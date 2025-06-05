@@ -24,14 +24,14 @@
             <div class="cover">
                 <img src="https://via.placeholder.com/300x400" alt="Couverture">
                 <button class="start-btn">Commencer la lecture</button>
-                <p class="book-description">Je frappe la porte de votre âme et laissez-moi vous confier ce petit livret avec sincérité. Ne vous hâtez pas pour le juger, mais commencer par le comprendre. Dans "La Voie du Salut", accéder dans un voyage fascinant, une symphonie enivrante à travers les enseignements et les fondements de l'islam et du christianisme. Plongez dans les mystères de l'identité de Jésus, de même que les récits envoûtants de sa naissance et des comparaisons entre la Bible et le Coran. Ensemble, pénétrons dans la Voie du Salut en toute objectivité et implorons à Dieu de nous guider vers elle. Car «quiconque demande, disait Jésus (Que la paix soit sur lui), reçoit, celui qui cherche trouve, et l'on ouvrira à celui qui frappe». Le Coran révèle ; Raconte le récit. Peut-être réfléchiront-ils. À travers ses pages empreintes de splendeur, ce livre est riche en arguments solides (+800 arguments), soutenus par des références étincelantes. Pénétrer avec délice dans cette lecture enrichissante, exquise, envoûtante, profonde et éclairante qui suscite une réflexion approfondie sur les questions spirituelles les plus fondamentales à l'horizon avec clarté et perspicacité. </p>
+                <p class="book-description">1111 frappe la porte de votre âme et laissez-moi vous confier ce petit livret avec sincérité. Ne vous hâtez pas pour le juger, mais commencer par le comprendre. Dans "La Voie du Salut", accéder dans un voyage fascinant, une symphonie enivrante à travers les enseignements et les fondements de l'islam et du christianisme. Plongez dans les mystères de l'identité de Jésus, de même que les récits envoûtants de sa naissance et des comparaisons entre la Bible et le Coran. Ensemble, pénétrons dans la Voie du Salut en toute objectivité et implorons à Dieu de nous guider vers elle. Car «quiconque demande, disait Jésus (Que la paix soit sur lui), reçoit, celui qui cherche trouve, et l'on ouvrira à celui qui frappe». Le Coran révèle ; Raconte le récit. Peut-être réfléchiront-ils. À travers ses pages empreintes de splendeur, ce livre est riche en arguments solides (+800 arguments), soutenus par des références étincelantes. Pénétrer avec délice dans cette lecture enrichissante, exquise, envoûtante, profonde et éclairante qui suscite une réflexion approfondie sur les questions spirituelles les plus fondamentales à l'horizon avec clarté et perspicacité. </p>
             </div>
         </div>
 
         <!-- Page Sommaire -->
-        <div class="index-page" id="indexPage" style="display: none;">
+        <div class="index-page" id="index-page" style="display: none;">
             <header>
-                <button class="close-btn"><span>×</span></button>
+                <button class="close-btn" aria-label="Fermer"><span>×</span></button>
                 <h1>Sommaires</h1>
             </header>
             <ul>
@@ -79,8 +79,7 @@
   <li data-sura="42"><span class="sura-number">42</span>Un Dieu, une religion<br> <br> <i class="fas fa-book-open"></i></li>
   <li data-sura="43"><span class="sura-number">43</span>Liste de défis<br> <br> <i class="fas fa-book-open"></i></li>
   <li data-sura="44"><span class="sura-number">44</span>APOCALYPSE<br> <br> <i class="fas fa-book-open"></i></li>
-</ul>
-            
+            </ul>
         </div>
 
         <!-- Page de lecture -->
@@ -89,14 +88,14 @@
                 <img src="logo.png" alt="Logo" class="logo">
                 <h1 id="suraTitle">La Voie du Salut 1</h1>
                 <div class="header-icons">
-                    <button class="icon-btn favorites-btn"><i class="fas fa-star"></i></button>
-                    <button class="icon-btn settings-btn"><i class="fas fa-cog"></i></button>
-                    <button class="icon-btn index-btn"><i class="fas fa-book-open"></i></button>
+                    <button class="icon-btn favorites-btn" aria-label="Favoris"><i class="fas fa-star"></i></button>
+                    <button class="icon-btn settings-btn" aria-label="Paramètres"><i class="fas fa-cog"></i></button>
+                    <button class="icon-btn index-btn" aria-label="Sommaire"><i class="fas fa-book-open"></i></button>
                 </div>
             </header>
             <input type="text" placeholder="Rechercher dans le livre..." class="search-bar" id="searchBar">
             <div class="search-results" id="searchResults" style="display: none;"></div>
-            <div class="content" id="readingContent">
+            <div class="content" id="readingContent" oncontextmenu="return false;" onselectstart="return false;" oncopy="return false;" oncut="return false;" onpaste="return false;">
                 <div class="arabic-text" id="arabicText">
                     بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ<br>ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَٰلَمِينَ
                 </div>
@@ -104,15 +103,15 @@
                     In the name of Allah, the Most Gracious, the Most Merciful<br>Praise be to Allah, the Lord of all the worlds
                 </div>
                 <div class="navigation-buttons">
-                    <button class="nav-btn prev-btn"><i class="fas fa-arrow-left"></i> Précédent</button>
-                    <button class="nav-btn next-btn">Suivant <i class="fas fa-arrow-right"></i></button>
+                    <button class="nav-btn prev-btn" aria-label="Chapitre précédent"><i class="fas fa-arrow-left"></i> Précédent</button>
+                    <button class="nav-btn next-btn" aria-label="Chapitre suivant">Suivant <i class="fas fa-arrow-right"></i></button>
                 </div>
-                <button class="favorite-btn">☆</button>
-                <button class="customize-btn"><i class="fas fa-paint-brush"></i></button>
-                <button class="ai-btn"><i class="fas fa-robot"></i> Assistant</button>
+                <button class="favorite-btn" aria-label="Ajouter aux favoris">☆</button>
+                <button class="customize-btn" aria-label="Personnaliser"><i class="fas fa-paint-brush"></i></button>
+                <button class="ai-btn" aria-label="Assistant IA"><i class="fas fa-robot"></i> Assistant</button>
             </div>
             <div class="customize-panel" id="customizePanel" style="display: none;">
-                <button class="close-customize-btn"><i class="fas fa-times"></i></button>
+                <button class="close-customize-btn" aria-label="Fermer"><i class="fas fa-times"></i></button>
                 <div class="color-icons">
                     <button class="color-btn" style="background: #ffffff;" data-color="#ffffff"></button>
                     <button class="color-btn" style="background: #9abaa0;" data-color="#9abaa0"></button>
@@ -124,10 +123,10 @@
                     <button class="color-btn" style="background: #000000;" data-color="#000000"></button>
                 </div>
                 <div class="option-icons">
-                    <button class="option-btn voice-play-btn"><i class="fas fa-play"></i> Lecture à haute voix</button>
-                    <button class="option-btn zoom-in-btn"><i class="fas fa-plus"></i> </button>
-                    <button class="option-btn zoom-out-btn"><i class="fas fa-minus"></i> </button>
-                    <button class="option-btn note-btn"><i class="fas fa-sticky-note"></i> Notes</button>
+                    <button class="option-btn voice-play-btn" aria-label="Lecture à haute voix"><i class="fas fa-play"></i> Lecture à haute voix</button>
+                    <button class="option-btn zoom-in-btn" aria-label="Agrandir texte"><i class="fas fa-plus"></i></button>
+                    <button class="option-btn zoom-out-btn" aria-label="Réduire texte"><i class="fas fa-minus"></i></button>
+                    <button class="option-btn note-btn" aria-label="Notes"><i class="fas fa-sticky-note"></i> Notes</button>
                 </div>
             </div>
         </div>
@@ -135,7 +134,7 @@
         <!-- Page Paramètres -->
         <div class="settings-panel" id="settingsPanel" style="display: none;">
             <header>
-                <button class="close-btn"><i class="fas fa-arrow-left"></i></button>
+                <button class="close-btn" aria-label="Retour"><i class="fas fa-arrow-left"></i></button>
                 <h1>Paramètres</h1>
             </header>
             <div class="settings-content">
@@ -158,7 +157,7 @@
                     <label>Police</label>
                     <select id="fontSelect">
                         <option value="Poppins">Poppins</option>
-                        <option value=" Merriweather">Merriweather</option>
+                        <option value="Merriweather">Merriweather</option>
                         <option value="Inter">Inter</option>
                         <option value="Roboto Slab">Roboto Slab</option>
                         <option value="Times New Roman">Times New Roman</option>
@@ -193,17 +192,16 @@
         <!-- Page Favoris -->
         <div class="favorites-page" id="favoritesPage" style="display: none;">
             <header>
-                <button class="close-btn"><i class="fas fa-arrow-left"></i></button>
+                <button class="close-btn" aria-label="Retour"><i class="fas fa-arrow-left"></i></button>
                 <h1>Favoris</h1>
             </header>
             <ul id="favoritesList"></ul>
         </div>
-        
-        
+
         <!-- Page Notes -->
-        <div class="notes-page" id="notesPage" style="display: none;">
+        <div class="notes-page" id="notes-page" style="display: none;">
             <header>
-                <button class="close-btn"><i class="fas fa-arrow-left"></i></button>
+                <button class="close-btn" aria-label="Retour"><i class="fas fa-arrow-left"></i></button>
                 <h1>Notes</h1>
             </header>
             <div class="notes-content">
@@ -213,24 +211,23 @@
             </div>
         </div>
     </div>
-    
+
     <!-- ASSISTANT IA -->
-        <div id="chatbot">
-  <div class="chat-header">
-    <span>Assistant IA</span>
-    <button id="close-chatbot"><i class="fas fa-times"></i></button>
-  </div>
-  <div id="messages"></div>
-  <div class="chat-footer">
-    <button id="clear-history"><i class="fas fa-trash"></i> Effacer</button>
-  </div>
-  <div id="inputArea">
-    <input type="text" id="input" placeholder="Pose ta question..." />
-    <button id="send"></button>
-  </div>
-</div>
-    
-    <script src="script.js"></script>
-    
+    <div id="chatbot">
+        <div class="chat-header">
+            <span>Assistant IA</span>
+            <button id="close-chatbot" aria-label="Fermer"><i class="fas fa-times"></i></button>
+        </div>
+        <div id="messages"></div>
+        <div class="chat-footer">
+            <button id="clear-history" aria-label="Effacer l'historique"><i class="fas fa-trash"></i> Effacer</button>
+        </div>
+        <div id="inputArea">
+            <input type="text" id="input" placeholder="Pose ta question..." />
+            <button id="send" aria-label="Envoyer"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
 </body>
 </html>
