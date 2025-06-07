@@ -53,6 +53,56 @@ document.addEventListener('DOMContentLoaded', async () => {
     let currentFontSize = 16;
     let isChatOpen = false;
 
+    // Fonction pour afficher le sommaire
+function showSommaire() {
+    const homePage = document.getElementById('homePage');
+    const indexPage = document.getElementById('index-page');
+    homePage.style.display = 'none';
+    indexPage.style.display = 'block';
+}
+
+// Création des bulles
+for (let i = 0; i < 10; i++) {
+    const bubble = document.createElement('div');
+    bubble.classList.add('bubble');
+    const size = Math.random() * 20 + 10;
+    bubble.style.width = bubble.style.height = `${size}px`;
+    bubble.style.left = `${Math.random() * 100}vw`;
+    bubble.style.animationDuration = `${8 + Math.random() * 6}s`;
+    bubble.style.opacity = Math.random() * 0.5 + 0.2;
+    document.body.appendChild(bubble);
+}
+
+// Initialisation du carrousel
+let currentPage = 1;
+const totalPages = 3;
+
+function showPage(pageNumber) {
+    document.querySelectorAll('.carousel-page').forEach(page => {
+        page.style.display = 'none';
+        page.style.transform = 'translateX(100%)';
+    });
+    const currentPageElement = document.getElementById(`page${pageNumber}`);
+    currentPageElement.style.display = 'block';
+    currentPageElement.style.transform = 'translateX(0)';
+}
+
+document.querySelectorAll('.nav-arrow.left-arrow').forEach(btn => {
+    btn.addEventListener('click', () => {
+        currentPage = currentPage > 1 ? currentPage - 1 : totalPages;
+        showPage(currentPage);
+    });
+});
+
+document.querySelectorAll('.nav-arrow.right-arrow').forEach(btn => {
+    btn.addEventListener('click', () => {
+        currentPage = currentPage < totalPages ? currentPage + 1 : 1;
+        showPage(currentPage);
+    });
+});
+
+showPage(currentPage);
+    
      // Contenu des 44 sourates en arabe, anglais et français (avec 4 paragraphes pour 1-5 et 44)
     const suraContents = {
         1: {
@@ -742,13 +792,14 @@ document.addEventListener('click', (e) => {
         }
     });
 
-    // Personnalisation des couleurs
-    document.querySelectorAll('.color-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            document.body.style.backgroundColor = btn.getAttribute('data-color');
-            localStorage.setItem('backgroundColor', btn.getAttribute('data-color'));
-        });
+// Personnalisation des couleurs
+document.querySelectorAll('.color-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const readingPage = document.getElementById('readingPage');
+        readingPage.style.backgroundColor = btn.getAttribute('data-color');
+        localStorage.setItem('readerBackgroundColor', btn.getAttribute('data-color'));
     });
+});
 
     // Charger le contenu du chapitre
     function loadSuraContent(verseIndex = null) {
@@ -814,14 +865,14 @@ if (savedFontSize) {
     textContent.style.fontSize = `${savedFontSize}px`;
 }
 
-const savedBgColor = localStorage.getItem('backgroundColor');
+// Charger les paramètres sauvegardés
+const savedBgColor = localStorage.getItem('readerBackgroundColor');
 if (savedBgColor) {
-    document.body.style.backgroundColor = savedBgColor;
+    document.getElementById('readingPage').style.backgroundColor = savedBgColor;
 } else {
-    document.body.style.backgroundColor = '#d2c9a3'; // Couleur par défaut
-    localStorage.setItem('backgroundColor', '#d2c9a3'); // Sauvegarder la valeur par défaut
+    document.getElementById('readingPage').style.backgroundColor = '#d2c9a3';
+    localStorage.setItem('readerBackgroundColor', '#d2c9a3');
 }
-
     // Initialisation
     loadSuraContent();
     loadFavorites();
