@@ -12,14 +12,9 @@
 }
 
 body {
-    background-color: #d2c9a3; /* Couleur de fond par défaut */
-    font-family: 'IBM Plex Sans', sans-serif; /* Police par défaut */
-}
-
-body {
-    font-family: 'Amiri', serif;
+    background-color: #d2c9a3;
+    font-family: 'IBM Plex Sans', sans-serif;
     margin: 0;
-    background: #f5f5f0;
     color: #1a3c34;
     transition: all 0.3s ease;
     -webkit-user-select: none;
@@ -154,6 +149,7 @@ header h1 {
 .reading-page {
     height: 100vh;
     overflow-y: auto;
+    background-color: #d2c9a3; /* Couleur par défaut */
 }
 
 .search-bar {
@@ -271,7 +267,16 @@ body.dark .highlight-verse {
     overflow-y: auto;
 }
 
-.arabic-text, .text-content {
+.arabic-text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #1a3c34;
+    margin-bottom: 20px;
+    direction: rtl !important; /* Texte arabe de droite à gauche */
+    text-align: right !important; /* Alignement à droite */
+}
+
+.text-content {
     font-size: 16px;
     line-height: 1.6;
     color: #1a3c34;
@@ -327,9 +332,12 @@ body.dark .highlight-verse {
     bottom: 0;
     left: 0;
     width: 100%;
-    background: #f5f5f0;
+    background: rgba(255, 255, 255, 0.1) !important; /* Fond semi-transparent */
+    -webkit-backdrop-filter: blur(5px); /* Préfixe pour compatibilité */
+    backdrop-filter: blur(5px); /* Effet de flou */
     padding: 15px;
-    border-top: 1px solid #d2c9a3;
+    border-top: 1px solid rgba(210, 201, 163, 0.3); /* Bordure subtile */
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.15); /* Ombre douce */
     display: none;
     flex-direction: column;
     align-items: center;
@@ -350,7 +358,12 @@ body.dark .highlight-verse {
     border: none;
     border-radius: 50%;
     cursor: pointer;
-    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease; /* Animation au survol */
+}
+
+.color-btn:hover {
+    transform: scale(1.2); /* Grossit légèrement au survol */
 }
 
 .option-btn {
@@ -358,11 +371,17 @@ body.dark .highlight-verse {
     height: auto;
     padding: 5px 10px;
     border-radius: 5px;
-    background: #d2c9a3;
+    background: rgba(210, 201, 163, 0.7); /* Fond semi-transparent basé sur #d2c9a3 */
     border: none;
     display: flex;
     align-items: center;
     gap: 5px;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.option-btn:hover {
+    background: rgba(210, 201, 163, 1); /* Plein #d2c9a3 au survol */
+    transform: translateY(-2px); /* Léger soulèvement */
 }
 
 .header-icons {
@@ -428,7 +447,7 @@ body.dark .highlight-verse {
     background: #2e7d32;
     color: white;
     border: none;
-    padding: 10px;
+    padding: 8px;
     border-radius: 5px;
     text-align: center;
     text-decoration: none;
@@ -443,12 +462,12 @@ body.dark .highlight-verse {
 
 .favorites-page {
     padding: 60px 20px 0;
-    height: auto; /* Laisser la hauteur s'adapter au contenu */
-    min-height: 0; /* Supprimer la hauteur minimale pour éviter l'espace vide */
-    max-height: 100vh; /* Garder la limite maximale pour le défilement */
+    height: auto;
+    min-height: 0;
+    max-height: 100vh;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    background: #fff;
+    background: #d2c9a3; /* Changé de #fff à #d2c9a3 */
     box-sizing: border-box;
 }
 
@@ -456,8 +475,9 @@ body.dark .highlight-verse {
     list-style: none;
     padding: 0;
     margin: 0;
-    padding-bottom: 0; /* Supprimer le padding-bottom pour éviter l'espace supplémentaire */
-    margin-bottom: 0; /* Assurer qu'aucune marge n'ajoute d'espace */
+    padding-bottom: 0;
+    margin-bottom: 0;
+    background: transparent; /* Assure que la liste elle-même est transparente */
 }
 
 #favoritesList li {
@@ -468,26 +488,26 @@ body.dark .highlight-verse {
     align-items: center;
     cursor: pointer;
     transition: background 0.3s ease;
+    background: transparent; /* Fond transparent pour les éléments */
 }
 
 #favoritesList li:hover {
-    background: #e0e0e0;
+    background: #e0e0e0; /* Conserve le survol */
 }
 
-/* Ajouter une règle pour le dernier élément de la liste pour supprimer l'espace résiduel */
 #favoritesList li:last-child {
-    border-bottom: none; /* Supprimer la bordure du dernier élément pour éviter un espace visuel */
-    padding-bottom: 0; /* Supprimer le padding-bottom du dernier élément */
+    border-bottom: none;
+    padding-bottom: 0;
 }
 
 .notes-page {
     padding: 60px 20px 2px;
     height: auto;
-    min-height: 0; /* Supprimer la hauteur minimale pour éviter l'espace vide */
-    max-height: 100vh; /* Déclencher le défilement si le contenu dépasse */
+    min-height: 0;
+    max-height: 100vh;
     overflow-y: auto;
-    -webkit-overflow-scrolling: touch; /* Améliorer le défilement sur mobile */
-    background: #f5f5f0;
+    -webkit-overflow-scrolling: touch;
+    background: #d2c9a3; /* Changé de #f5f5f0 à #d2c9a3 */
     box-sizing: border-box;
 }
 
@@ -509,16 +529,19 @@ body.dark .highlight-verse {
     border: none;
     padding: 10px;
     border-radius: 5px;
+    margin-top: 5px; /* Ajoute un espace au-dessus pour l'alignement */
+    display: block;
 }
 
 .category {
     margin-bottom: 5px;
+    background: transparent; /* Assure que le conteneur est transparent */
 }
 
 .category h3 {
     margin: 0;
     padding: 5px;
-    background: #d2c9a3;
+    background: #d2c9a3; /* Déjà correct */
     border-radius: 5px;
 }
 
@@ -528,6 +551,7 @@ body.dark .highlight-verse {
     padding: 5px;
     border: 1px solid #d2c9a3;
     border-radius: 5px;
+    background: #fff; /* Fond explicite pour éviter le blanc */
 }
 
 body.dark {
@@ -573,33 +597,34 @@ body.dark .start-btn {
 }
 
 #chatbot {
-  position: fixed;
-  top: 80px;
-  bottom: 20px;
-  right: 20px;
-  width: 350px;
-  max-height: 90vh;
-  background: #d2c9a3; /* Fond du chat modifié */
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  display: none;
-  flex-direction: column;
-  overflow: hidden;
-  z-index: 9999;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  transition: all 0.3s ease;
+    position: fixed;
+    top: 80px;
+    bottom: 20px;
+    right: 20px;
+    width: 350px;
+    max-height: 90vh;
+    background: url('./chat-background.png') no-repeat center center !important;
+    background-size: 100% 100% !important; /* Étire l'image pour remplir tout le conteneur */
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 9999;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: all 0.3s ease;
 }
 
 /* Media query pour les écrans mobiles (largeur inférieure à 600px) */
 @media screen and (max-width: 600px) {
   #chatbot {
-    width: 90%; /* Réduit la largeur pour s'adapter à l'écran */
-    max-width: 350px; /* Limite la largeur maximale */
-    left: 50%; /* Centre horizontalement */
-    transform: translateX(-50%); /* Déplace de moitié de sa largeur pour un centrage parfait */
-    right: auto; /* Supprime la propriété right pour éviter les conflits */
+    width: 90%;
+    max-width: 350px;
+    left: 50%;
+    transform: translateX(-50%);
+    right: auto;
     top: 70px;
-    bottom: 10px; /* Réduit légèrement l'espace du bas pour mobile */
+    bottom: 10px;
     max-height: 70vh;
   }
 }
@@ -609,11 +634,11 @@ body.dark .start-btn {
 }
 
 #messages {
-  flex: 1;
-  padding: 15px;
-  overflow-y: auto;
-  background: #d2c9a3; /* Fond beige de la zone des messages (conservé) */
-  color: #000000;
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background: transparent !important; /* Remplace #d2c9a3 par transparent */
+    color: #000000;
 }
 
 .message {
@@ -638,7 +663,8 @@ body.dark .start-btn {
 }
 
 body.dark #chatbot {
-  background: #d2c9a3;
+    background: url('./chat-background.png') no-repeat center center !important;
+    background-size: 100% 100% !important; /* Même comportement en mode sombre */
 }
 
 body.dark .bot {
@@ -659,13 +685,13 @@ body.dark .bot {
   padding: 10px;
   border-radius: 20px;
   background: #c4c4c4;
-  color: #000000;
+  color: #1c5739;
   outline: none;
   font-size: 14px;
 }
 
 #input::placeholder {
-  color: #c58a38;
+  color: #1a9e5a;
 }
 
 #send {
@@ -709,7 +735,7 @@ body.dark #send {
 .chat-footer {
   padding: 5px 15px;
   text-align: right;
-  background: #d2c9a3; /* Fond beige pour le pied de chat */
+  background: transparent !important;
 }
 
 #clear-history {
@@ -737,4 +763,222 @@ body.dark #send {
 body.dark #clear-history {
   background: #255e28;
   color: #ffffff;
+}
+
+/* Styles pour la page d'accueil avec carrousel */
+body {
+    background-color: #d2c9a3;
+    font-family: 'IBM Plex Sans', sans-serif;
+    color: #000;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Header */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: #2e7d32;
+    color: white;
+}
+
+.logo {
+    height: 40px;
+    margin-right: 10px;
+}
+
+header h1 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+/* Carousel */
+.carousel {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.carousel-page {
+    width: 100%;
+    display: block;
+    transition: transform 0.5s ease-in-out;
+    background-color: #d2c9a3;
+}
+
+.page-image-container {
+    width: 100%;
+    display: block; /* Changé pour un flux naturel */
+    text-align: center; /* Centre l'image horizontalement */
+    padding-top: 10px; /* Petit espace en haut */
+}
+
+.page-image {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 60vh; /* Limite la hauteur de l'image pour éviter qu'elle prenne trop de place */
+    object-fit: contain;
+}
+
+.page-content {
+    width: 98%; /* Augmenté de 90% à 95% pour réduire les espaces latéraux */
+    max-width: 650px; /* Légèrement augmenté pour plus de texte visible */
+    padding: 20px;
+    text-align: left; /* Changé de center à left pour les paragraphes */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px auto 3mm auto;
+    display: block;
+    box-sizing: border-box;
+    font-size: 1.2rem; /* Augmenté de la taille par défaut (environ 1rem) à 1.2rem */
+}
+
+.page-content ul {
+    text-align: left;
+    margin-left: 0;
+    padding-left: 20px;
+    list-style-type: none; /* Supprime les puces (points) */
+}
+
+.page-title {
+    font-size: 2rem;
+    color: #0A2463;
+    margin: 10px 0;
+}
+
+.subtitle {
+    font-style: italic;
+    color: #444;
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+.quote-box {
+    background-color: #F6F5EF;
+    border-left: 4px solid #BFAF5E;
+    padding: 15px;
+    margin: 20px 0;
+    font-size: 1rem;
+    border-radius: 5px;
+}
+
+.start-btn {
+    padding: 10px 20px;
+    background-color: #2e7d32;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin: 10px 0;
+}
+
+.start-btn:hover {
+    background-color: #1b5e20;
+}
+
+/* Navigation Arrows */
+.nav-arrows-container {
+    display: flex;
+    justify-content: center; /* Centre les flèches horizontalement */
+    gap: 10px; /* Espace entre les flèches */
+    margin: 10px 0; /* Espace au-dessus et en dessous du conteneur */
+    z-index: 10;
+}
+
+.nav-arrow {
+    background: #2e7d32;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-arrow.left-arrow,
+.nav-arrow.right-arrow {
+    position: static; /* Supprime le positionnement fixe */
+    transform: none; /* Supprime la transformation */
+}
+
+.nav-arrow:hover {
+    background: #1b5e20;
+}
+
+/* Bubbles */
+.bubble {
+    position: fixed;
+    bottom: -50px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: floatBubble 10s linear infinite;
+}
+
+@keyframes floatBubble {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) scale(0.5);
+        opacity: 0;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .page-title {
+        font-size: 1.5rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .quote-box {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+
+    .start-btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+
+    .nav-arrows-container {
+        gap: 5px; /* Réduit l'espace entre les flèches pour les petits écrans */
+    }
+
+    .nav-arrow {
+        width: 25px;
+        height: 25px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Scroll Animation (si nécessaire, à activer avec JavaScript) */
+.scroll-anim {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.scroll-anim.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.home-page header {
+    display: none; /* Masque le header sur la page d'accueil */
 }
