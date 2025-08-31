@@ -156,7 +156,7 @@ header h1 {
     width: 90%;
     max-width: 500px;
     padding: 5px;
-    margin: 60px auto 20px;
+    margin: 80px auto 20px; /* Changé de 60px à 80px pour la marge supérieure */
     background: #2e7d32;
     color: white;
     border: none;
@@ -165,7 +165,6 @@ header h1 {
     text-align: center;
 }
 
-/* Ajustement pour les écrans plus petits (téléphones) */
 @media (max-width: 600px) {
     .search-bar {
         margin-top: 70px;
